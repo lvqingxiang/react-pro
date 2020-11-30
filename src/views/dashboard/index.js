@@ -1,13 +1,8 @@
 import React, { Fragment } from 'react'
-import { Menu, Button, Layout } from 'antd'
-import {
-  MenuFoldOutlined,
-  MenuUnfoldOutlined,
-  BarChartOutlined,
-} from '@ant-design/icons'
-import './index.css'
-import { NavLink, Route, Switch, useRouteMatch } from 'react-router-dom'
-// import { HashRouter, Redirect, Route, Switch } from 'react-router-dom'
+import { Menu, Layout } from 'antd'
+import { BarChartOutlined, TableOutlined } from '@ant-design/icons'
+import './index.scss'
+import { NavLink, Route, Switch } from 'react-router-dom'
 import Form from '@/views/examples/form'
 import Table from '@/views/examples/table'
 const { Header, Sider, Content } = Layout
@@ -21,14 +16,11 @@ class Dashboard extends React.Component {
       collapsed: !this.state.collapsed,
     })
   }
-  handleRouterChange = (item, key) => {}
   render() {
-    // const { path } = useRouteMatch()
-    // console.log(path)
     return (
       <Fragment>
         <Layout>
-          <Header style={{ background: '#132138' }}>ed</Header>
+          <Header className="header">碗圆后台管理系统</Header>
           <Layout>
             <Sider
               className="siderbar"
@@ -39,23 +31,18 @@ class Dashboard extends React.Component {
               <Menu
                 theme="dark"
                 mode="inline"
-                style={{ background: '#132138' }}
+                style={{ background: '#14293e' }}
               >
                 <Menu.Item icon={<BarChartOutlined />}>
-                  <NavLink to={`${this.props.match.url}/form`}>
-                    form表单
-                  </NavLink>
+                  <NavLink to={`${this.props.match.url}/form`}>FORM</NavLink>
                 </Menu.Item>
-                <Menu.Item>
-                  <NavLink to={`${this.props.match.url}/table`}>
-                    table表格
-                  </NavLink>
+                <Menu.Item icon={<TableOutlined />}>
+                  <NavLink to={`${this.props.match.url}/table`}>TABLE</NavLink>
                 </Menu.Item>
-                <Menu.Item>3</Menu.Item>
               </Menu>
             </Sider>
             <Layout>
-              <Content>
+              <Content className="center">
                 <Switch>
                   <Route
                     path={`${this.props.match.url}/form`}

@@ -36,12 +36,11 @@ export default class FormExample extends React.Component {
       },
     }
   }
-  handleFormChange = (event) => {
-    const { name, value } = event.target
-    this.state.formQuery[name] = value
-    this.setState({
-      formQuery: this.state.formQuery,
-    })
+  handleMerchNameChange = (value) => {
+    this.state.formQuery.merchName = value
+  }
+  handleMerchPriceChange = (value) => {
+    this.state.formQuery.merchName = value
   }
   handleSelectChange = (value) => {
     this.state.formQuery.merchType = value
@@ -68,7 +67,7 @@ export default class FormExample extends React.Component {
               name="merchName"
               value={this.state.merchName}
               allowClear
-              onChange={this.handleFormChange}
+              onChange={this.handleMerchNameChange}
             />
           </Form.Item>
           <Form.Item label="商品种类">
@@ -93,7 +92,7 @@ export default class FormExample extends React.Component {
                     precision={2}
                     formatter={(value) => `¥ ${value}`}
                     parser={(value) => value.replace('¥', '')}
-                    onChange={this.handleFormChange}
+                    onChange={this.handleMerchPriceChange}
                   ></InputNumber>
                 </Form.Item>
               </Col>

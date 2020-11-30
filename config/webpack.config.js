@@ -352,6 +352,29 @@ module.exports = function (webpackEnv) {
             // "url" loader works like "file" loader except that it embeds assets
             // smaller than specified limit in bytes as data URLs to avoid requests.
             // A missing `test` is equivalent to a match.
+            // 20201129 lqx --sass-loader
+            {
+              test: /\.scss$/,
+              use: [
+                {
+                  loader: 'style-loader',
+                },
+                {
+                  loader: 'css-loader',
+                },
+                {
+                  loader: 'sass-loader',
+                },
+                {
+                  loader: 'sass-resources-loader',
+                  options: {
+                    resources: [
+                      path.resolve(__dirname, '../src/assets/sass/index.scss'),
+                    ],
+                  },
+                },
+              ],
+            },
             {
               test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/],
               loader: require.resolve('url-loader'),
